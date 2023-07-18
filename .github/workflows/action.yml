@@ -1,0 +1,19 @@
+name: greetings-workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      who-to-greet:  # id of input
+        description: 'Who to greet'
+        required: true
+        default: 'World'
+
+jobs:
+  build-and-ipa:
+    runs-on: [self-hosted, linux]
+    steps:
+      - uses: actions/checkout@v3
+      
+      - run: echo Hello ${{ inputs.who-to-greet }}.
+        shell: bash
+
